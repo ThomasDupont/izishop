@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Talkizishop</title>
+    <style>
+        .green {
+            background-color: GREEN;
+            color: GREEN;
+        }
+        .red {
+            background-color: RED;
+            color: RED;
+        }
+        .blue {
+            background-color: BLUE;
+            color: BLUE;
+        }
+        .white {
+            background-color: WHITE;
+            color: WHITE;
+        }
+    </style>
+</head>
+<body ng-app="criticalPath">
+    <h1>Calcul d'itinéraire optimal en magasin en fonction de sa liste de course</h1>
+    <div ng-controller="HomeCtrl">
+        <p>Définition de la grille : blanc : allée, rouge : rayon, vert : itinéraire, bleu : étape (de la liste de course) <br> Point (0,0) en haut à gauche</p>
+        <div>
+            <label for="selectShopping">Choississez ce que vous voulez acheter</label>
+            <select id="selectShopping" ng-change="addToList()" ng-options="name as name.element for name in listShop" ng-model="itemList"></select>
+            <button ng-click="validation()">validation</button>
+        </div>
+        <p ng-repeat="item in shopList track by $index">{{item.element}}</p>
+        <table>
+            <tr ng-repeat="line in grid track by $index">
+                <td ng-class="{green: col == 4, red: col == 1, blue: col == 2, white: col == 0}" ng-repeat="col in line track by $index">{{col}}</td>
+            </tr>
+        </table>
+    </div>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-route.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-sanitize.js"></script>
+    <script src="js/operation.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/models/PathFinding.js"></script>
+    <script src="js/controllers/HomeCtrl.js"></script>
+</body>
+</html>
