@@ -38,7 +38,7 @@ let PathFinding = function() {
             status: 'Start'
         }];
         var orientation = ['North', 'East', 'South', 'West'];
-        //We loop on the position queu
+        //We loop on the position queue
         while (queue.length > 0) {
             // we test the first position and put off the key
             var currentLocation = queue.shift();
@@ -49,8 +49,6 @@ let PathFinding = function() {
                     // The location if the ending position
                     return newLocation.positionPath;
                 } else if (newLocation.status === 'Valid') {
-
-
                     // We add the location to the queue to be test
                     queue.push(newLocation);
                 }
